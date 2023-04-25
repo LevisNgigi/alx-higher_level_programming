@@ -1,7 +1,9 @@
 #!/usr/bin/node
-// makes get request for SW movie id
+// printing the status code of a GET request
 const request = require('request');
-request(`http://swapi.co/api/films/${process.argv[2]}`, function (error, response, body) {
-  error && console.log(error);
-  console.log(JSON.parse(body).title);
+const url = 'https://swapi-api.alx-tools.com/api/films/' + process.argv[2];
+request(url, (err, res, body) => {
+  if (err) console.error(err);
+  const data = JSON.parse(body);
+  console.log(data.title);
 });
